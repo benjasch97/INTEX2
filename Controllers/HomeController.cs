@@ -26,5 +26,10 @@ namespace INTEX2.Controllers
             return View();
         }
 
+        public IActionResult Predictor()
+        {
+            return View();
+        }
+
     }
 }
