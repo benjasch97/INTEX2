@@ -2,3 +2,11 @@
     ViewData["Title"] = "Accidents";
 }
 
+@model List<Accident>
+
+<ul>
+    @foreach (var a in Model)
+    {
+        <li>@a.CRASH_ID @a.CITY</li>
+    }
+</ul>

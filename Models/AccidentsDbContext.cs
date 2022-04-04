@@ -13,6 +13,6 @@ namespace INTEX2.Models
 
         }
 
-        public DbSet<Accident> Accidents { get; set; }
+        public DbSet<Accident> mytable { get; set; }
     }
 }

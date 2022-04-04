@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using INTEX2.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -10,10 +11,11 @@ namespace INTEX2.Controllers
 {
     public class HomeController : Controller
     {
+        private IAccidentsRepository _repo { get; set; }
 
-        public HomeController()
+        public HomeController(IAccidentsRepository temp)
         {
-
+            _repo = temp;
         }
 
         public IActionResult Index()
@@ -23,7 +25,9 @@ namespace INTEX2.Controllers
 
         public IActionResult Accidents()
         {
-            return View();
+            var accidents = _repo.mytable.ToList();
+
+            return View(accidents);
         }
 
         public IActionResult Predictor()
