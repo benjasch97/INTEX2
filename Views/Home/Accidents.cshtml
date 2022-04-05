@@ -2,11 +2,13 @@
     ViewData["Title"] = "Accidents";
 }
 
-@model List<Accident>
+@model AccidentsViewModel
 
-<ul>
-    @foreach (var a in Model)
+<ol>
+    @foreach (var a in Model.mytable)
     {
         <li>@a.CRASH_ID @a.CITY</li>
     }
-</ul>
+</ol>
+
+<div page-model="@Model.PageInfo" page-action="Accidents"></div>

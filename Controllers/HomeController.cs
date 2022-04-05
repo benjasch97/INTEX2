@@ -1,4 +1,5 @@
 ﻿using INTEX2.Models;
+using INTEX2.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -23,11 +24,25 @@ namespace INTEX2.Controllers
             return View();
         }
 
-        public IActionResult Accidents()
+        public IActionResult Accidents(int pageNum = 1)
         {
-            var accidents = _repo.mytable.ToList();
+            int pageSize = 25000;
 
-            return View(accidents);
+            var x = new AccidentsViewModel
+            {
+                mytable = _repo.mytable
+                .Skip((pageNum - 1) * pageSize)
+                .Take(pageSize),
+
+                PageInfo = new PageInfo
+                {
+                    TotalNumAccidents = _repo.mytable.Count(),
+                    AccidentsPerPage = pageSize,
+                    CurrentPage = pageNum
+                }
+            };
+
+            return View(x);
         }
 
         public IActionResult Predictor()
