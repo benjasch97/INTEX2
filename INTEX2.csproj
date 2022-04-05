@@ -5,14 +5,31 @@
   </PropertyGroup>
 
   <ItemGroup>
+<<<<<<< HEAD
+    <Folder Include="Pages\" />
+    <Folder Include="Pages\Admin\" />
+    <Folder Include="wwwroot\lib\bootstrap\dist\css\" />
+=======
     <Compile Remove="Pages\**" />
     <Content Remove="Pages\**" />
     <EmbeddedResource Remove="Pages\**" />
     <None Remove="Pages\**" />
+>>>>>>> master
   </ItemGroup>
 
   <ItemGroup>
     <None Remove="Pages\" />
+<<<<<<< HEAD
+    <None Remove="Pages\Admin\" />
+    <None Remove="Microsoft.EntityFrameworkCore" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.22" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="wwwroot\lib\bootstrap\dist\css\" />
+=======
+>>>>>>> master
   </ItemGroup>
 
 
