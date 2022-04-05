@@ -5,13 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Pages\" />
-    <Folder Include="Pages\Admin\" />
+    <Compile Remove="Pages\**" />
+    <Content Remove="Pages\**" />
+    <EmbeddedResource Remove="Pages\**" />
+    <None Remove="Pages\**" />
   </ItemGroup>
 
   <ItemGroup>
     <None Remove="Pages\" />
-    <None Remove="Pages\Admin\" />
   </ItemGroup>
 
 
