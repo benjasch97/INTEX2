@@ -2,7 +2,7 @@
 @page "/admin"
 <!--inherits repository-->
 
-
+@inherits OwningComponentBase<INTEX2.Models.IAccidentsRepository>
 
 <table class="table table-sm table-striped table-bordered">
 
@@ -17,7 +17,7 @@
     @if (AccidentData?.Count() > 0)
     {
         //List the accidents
-        @foreach (Accidents a in AccidentData)
+        @foreach (INTEX2.Models.Accident a in AccidentData)
         {
             <tr>
                 <td>@a.CRASH_ID</td>
@@ -36,7 +36,17 @@
 
 @code {
 
-    <!--public iaccidentrepo-->
-    <!--public ienumerable AccidentData{get; set;}-->
+    public INTEX2.Models.IAccidentsRepository repo => Service;
+
+    public IEnumerable<INTEX2.Models.Accident> AccidentData { get; set; }
+
+    protected async override Task OnInitializedAsync()
+    {
+        await UpdateData();
+    }
+    public async Task UpdateData()
+    {
+        AccidentData = await repo.mytable.ToListAsync();
+    }
 
 }
