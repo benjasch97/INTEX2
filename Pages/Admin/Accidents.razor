@@ -1,0 +1,42 @@
+﻿@page "/admin/accidents"
+@page "/admin"
+<!--inherits repository-->
+
+
+
+<table class="table table-sm table-striped table-bordered">
+
+    <thead>
+        <tr>
+            <th>Crash ID</th>
+            <th>Crash Date Time</th>
+            <th>Route</th>
+        </tr>
+    </thead>
+
+    @if (AccidentData?.Count() > 0)
+    {
+        //List the accidents
+        @foreach (Accidents a in AccidentData)
+        {
+            <tr>
+                <td>@a.CRASH_ID</td>
+                <td>@a.CRASH_DATETIME</td>
+                <td>@a.ROUTE</td>
+            </tr>
+        }
+    }
+    else
+    {
+        <tr>
+            <td colspan="5" class="text-center">No Accidents</td>
+        </tr>
+    }
+</table>
+
+@code {
+
+    <!--public iaccidentrepo-->
+    <!--public ienumerable AccidentData{get; set;}-->
+
+}

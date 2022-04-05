@@ -8,10 +8,18 @@
     <Folder Include="Models\" />
     <Folder Include="Pages\" />
     <Folder Include="Pages\Admin\" />
+    <Folder Include="wwwroot\lib\bootstrap\dist\css\" />
   </ItemGroup>
 
   <ItemGroup>
     <None Remove="Pages\" />
     <None Remove="Pages\Admin\" />
+    <None Remove="Microsoft.EntityFrameworkCore" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.22" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="wwwroot\lib\bootstrap\dist\css\" />
   </ItemGroup>
 </Project>
