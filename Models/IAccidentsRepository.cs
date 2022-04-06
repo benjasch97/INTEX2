@@ -9,8 +9,8 @@ namespace INTEX2.Models
     {
         IQueryable<Accident> mytable { get; }
 
-        public void Add(Accident a);
-        public void Save(Accident a);
-        public void Delete(Accident a);
+        public void SaveAccident(Accident a);
+        public void AddAccident(Accident a);
+        public void DeleteAccident(Accident a);
     }
 }

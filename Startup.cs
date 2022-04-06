@@ -1,7 +1,7 @@
 using INTEX2.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
 
 namespace INTEX2
 {
@@ -33,8 +34,19 @@ namespace INTEX2
                 options.UseMySql(Configuration["ConnectionStrings:AccidentsDbConnection"]);
             });
 
+            services.AddDbContext<AppIdentityDBContext>(options =>
+                options.UseSqlite(Configuration["ConnectionStrings:IdentityConnection"]));
+
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<AppIdentityDBContext>();
+
             services.AddScoped<IAccidentsRepository, EFAccidentsRepository>();
 
+
+
+
+            services.AddRazorPages();
+            services.AddServerSideBlazor();
 
         }
 
@@ -51,12 +63,16 @@ namespace INTEX2
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            
             app.UseHttpsRedirection();
+            app.UseAuthentication();
             app.UseStaticFiles();
 
             app.UseRouting();
 
+
             app.UseAuthorization();
+          
 
             app.UseEndpoints(endpoints =>
             {
@@ -95,7 +111,16 @@ namespace INTEX2
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
+                endpoints.MapBlazorHub();
+
+                endpoints.MapFallbackToPage("/admin/{*catchall}", "/Admin/Index");
+
             });
+
+            IdentitySeedData.EnsurePopulated(app);
+
+
         }
     }
 }

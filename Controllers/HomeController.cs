@@ -22,6 +22,7 @@ namespace INTEX2.Controllers
         public IActionResult Index()
         {
             return View();
+
         }
 
         [HttpGet]
@@ -77,6 +78,12 @@ namespace INTEX2.Controllers
         }
 
         public IActionResult Predictor()
+        {
+            return View();
+        }
+
+
+        public IActionResult Admin()
         {
             return View();
         }
