@@ -16,18 +16,18 @@ namespace INTEX2.Models
 
         public IQueryable<Accident> mytable => _context.mytable;
 
-        public void Add(Accident a)
+        public void SaveAccident(Accident a)
+        {
+            _context.SaveChanges();
+        }
+
+        public void AddAccident(Accident a)
         {
             _context.Add(a);
             _context.SaveChanges();
         }
 
-        public void Save(Accident a)
-        {
-            _context.SaveChanges();
-        }
-
-        public void Delete(Accident a)
+        public void DeleteAccident(Accident a)
         {
             _context.Remove(a);
             _context.SaveChanges();

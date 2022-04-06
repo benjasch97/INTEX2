@@ -22,6 +22,7 @@ namespace INTEX2.Controllers
         public IActionResult Index()
         {
             return View();
+
         }
 
         public IActionResult Accidents(int pageNum = 1)
@@ -50,5 +51,9 @@ namespace INTEX2.Controllers
             return View();
         }
 
+        public IActionResult Admin()
+        {
+            return View();
+        }
     }
 }
