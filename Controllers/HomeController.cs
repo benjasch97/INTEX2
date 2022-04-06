@@ -24,15 +24,35 @@ namespace INTEX2.Controllers
             return View();
         }
 
-        public IActionResult Accidents(int pageNum = 1)
+        [HttpGet]
+        public IActionResult Accidents(string month, string day, Nullable<int> hour, int pageNum = 1)
         {
             int pageSize = 25000;
+
+            ViewBag.Months = _repo.mytable
+                .Select(x => x.MONTH)
+                .Distinct()
+                .ToList();
+
+            ViewBag.Weekdays = _repo.mytable
+                .Select(x => x.DAY_OF_WEEK)
+                .Distinct()
+                .ToList();
+
+            ViewBag.Hours = _repo.mytable
+                .Select(x => x.HOUR)
+                .Distinct()
+                .OrderBy(x => x)
+                .ToList();
 
             var x = new AccidentsViewModel
             {
                 mytable = _repo.mytable
-                .Skip((pageNum - 1) * pageSize)
-                .Take(pageSize),
+                    .Where(a => a.MONTH == month || month == null)
+                    .Where(a => a.DAY_OF_WEEK == day || day == null)
+                    .Where(a => a.HOUR == hour || hour == null)
+                    .Skip((pageNum - 1) * pageSize)
+                    .Take(pageSize),
 
                 PageInfo = new PageInfo
                 {
@@ -45,7 +65,23 @@ namespace INTEX2.Controllers
             return View(x);
         }
 
+        [HttpPost]
+        public IActionResult Accidents(string month, string day, Nullable<int> hour)
+        {
+            return RedirectToAction("Accidents", new 
+            { 
+                month = month,
+                day = day,
+                hour = hour
+            });
+        }
+
         public IActionResult Predictor()
+        {
+            return View();
+        }
+
+        public IActionResult Privacy()
         {
             return View();
         }

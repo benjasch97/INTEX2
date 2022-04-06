@@ -4,11 +4,52 @@
 
 @model AccidentsViewModel
 
-<ol>
-    @foreach (var a in Model.mytable)
-    {
-        <li>@a.CRASH_ID @a.CITY</li>
-    }
-</ol>
+<h1>Accident List</h1> <br />
 
-<div page-model="@Model.PageInfo" page-action="Accidents"></div>
+<div class="card">
+
+    <form method="post">
+        <label class="m-2 p-2">Month:</label>
+        <select name="month" class="m-2 p-1">
+            <option></option>
+            @foreach (var m in ViewBag.Months)
+            {
+                <option value="@m">@m</option>
+            }
+        </select>
+
+        <label class="m-2 p-2">Day of the week:</label>
+        <select name="day" class="m-2 p-1">
+            <option></option>
+            @foreach (var d in ViewBag.Weekdays)
+            {
+                <option value="@d">@d</option>
+            }
+        </select>
+
+        <label class="m-2 p-2">Hour in the day:</label>
+        <select name="hour" class="m-2 p-1">
+            <option></option>
+            @foreach (var h in ViewBag.Hours)
+            {
+                <option value="@h">@h</option>
+            }
+        </select>
+
+        <a asp-controller="Home" asp-action="Accidents" class="btn btn-secondary float-right m-2 p-1">Reset filter</a>
+        <button type="submit" class="btn btn-primary float-right m-2 p-1">Apply filter</button>
+
+    </form>
+</div>
+<br />
+
+    <ol>
+        @foreach (var a in Model.mytable)
+        {
+            <li>@a.CRASH_ID @a.CITY</li>
+        }
+    </ol>
+
+    <div page-model="@Model.PageInfo" page-action="Accidents" page-class="btn"
+         page-class-normal="btn-outline-dark" page-class-selected="btn-primary"
+         page-classes-enabled="true" class="btn-group pull-right m-1"></div>

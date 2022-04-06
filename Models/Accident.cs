@@ -10,7 +10,10 @@ namespace INTEX2.Models
     {
         [Key]
         public int CRASH_ID { get; set; }
-        public string CRASH_DATETIME { get; set; }
+        public string MONTH { get; set; }
+        public string DAY_OF_WEEK { get; set; }
+        public int YEAR { get; set; }
+        public Nullable<int> HOUR { get; set; }
         public string ROUTE { get; set; }
         public double MILEPOINT { get; set; }
         public string LAT_UTM_Y { get; set; }
@@ -21,6 +24,7 @@ namespace INTEX2.Models
         public int CRASH_SEVERITY_ID { get; set; }
         public string WORK_ZONE_RELATED { get; set; }
         public string PEDESTRIAN_INVOLVED { get; set; }
+        public string BICYCLIST_INVOLVED { get; set; }
         public string MOTORCYCLE_INVOLVED { get; set; }
         public string IMPROPER_RESTRAINT { get; set; }
         public string UNRESTRAINED { get; set; }
