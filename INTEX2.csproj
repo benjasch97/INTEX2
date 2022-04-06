@@ -43,4 +43,10 @@
     <Folder Include="Views\Account\" />
     <Folder Include="Areas\Identity\Data\" />
   </ItemGroup>
+
+
+
+  <ItemGroup>
+    <Folder Include="Components\" />
+  </ItemGroup>
 </Project>
