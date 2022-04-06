@@ -57,6 +57,38 @@ namespace INTEX2
 
             app.UseEndpoints(endpoints =>
             {
+                //endpoints.MapControllerRoute("MonthDayHourPaging",
+                //    "{controller=Home}/{action=Accidents}/{month}/{day}/Hour{hour}/Page{pageNum}",
+                //    new { Controller = "Home", Action = "Accidents", pageNum = 1 });
+
+                //endpoints.MapControllerRoute("MonthDayPaging",
+                //    "{controller=Home}/{action=Accidents}/{month}/{day}/Page{pageNum}",
+                //    new { Controller = "Home", Action = "Accidents", pageNum = 1 });
+
+                //endpoints.MapControllerRoute("MonthHourPaging",
+                //    "{controller=Home}/{action=Accidents}/{month}/Hour{hour}/Page{pageNum}",
+                //    new { Controller = "Home", Action = "Accidents", pageNum = 1 });
+
+                //endpoints.MapControllerRoute("DayHourPaging",
+                //    "{controller=Home}/{action=Accidents}/{day}/Hour{hour}/Page{pageNum}",
+                //    new { Controller = "Home", Action = "Accidents", pageNum = 1 });
+
+                //endpoints.MapControllerRoute("MonthPaging",
+                //    "{controller=Home}/{action=Accidents}/{month}/Page{pageNum}",
+                //    new { Controller = "Home", Action = "Accidents", pageNum = 1 });
+
+                endpoints.MapControllerRoute("DayPaging",
+                    "{controller=Home}/{action=Accidents}/{day}/Page{pageNum}",
+                    new { Controller = "Home", Action = "Accidents", pageNum = 1 });
+
+                //endpoints.MapControllerRoute("HourPaging",
+                //    "{controller=Home}/{action=Accidents}/Hour{hour}/Page{pageNum}",
+                //    new { Controller = "Home", Action = "Accidents", pageNum = 1 });
+
+                endpoints.MapControllerRoute("Paging",
+                    "Page{pageNum}",
+                    new { Controller = "Home", Action = "Accidents", pageNum = 1});
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
