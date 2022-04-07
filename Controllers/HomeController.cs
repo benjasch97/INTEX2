@@ -26,32 +26,30 @@ namespace INTEX2.Controllers
         }
 
         [HttpGet]
-        public IActionResult Accidents(string month, string day, Nullable<int> hour, int pageNum = 1)
+        public IActionResult Accidents(Nullable<float> motorcycle, int pageNum = 1)
         {
             int pageSize = 25000;
 
-            ViewBag.Months = _repo.mytable
-                .Select(x => x.MONTH)
-                .Distinct()
-                .ToList();
+            //ViewBag.Months = _repo.mytable
+            //    .Select(x => x.MONTH)
+            //    .Distinct()
+            //    .ToList();
 
-            ViewBag.Weekdays = _repo.mytable
-                .Select(x => x.DAY_OF_WEEK)
-                .Distinct()
-                .ToList();
+            //ViewBag.Weekdays = _repo.mytable
+            //    .Select(x => x.DAY_OF_WEEK)
+            //    .Distinct()
+            //    .ToList();
 
-            ViewBag.Hours = _repo.mytable
-                .Select(x => x.HOUR)
-                .Distinct()
-                .OrderBy(x => x)
-                .ToList();
+            //ViewBag.Hours = _repo.mytable
+            //    .Select(x => x.HOUR)
+            //    .Distinct()
+            //    .OrderBy(x => x)
+            //    .ToList();
 
             var x = new AccidentsViewModel
             {
                 mytable = _repo.mytable
-                    .Where(a => a.MONTH == month || month == null)
-                    .Where(a => a.DAY_OF_WEEK == day || day == null)
-                    .Where(a => a.HOUR == hour || hour == null)
+                    .Where(a => a.MOTORCYCLE_INVOLVED == motorcycle || motorcycle == null)
                     .Skip((pageNum - 1) * pageSize)
                     .Take(pageSize),
 
@@ -67,13 +65,11 @@ namespace INTEX2.Controllers
         }
 
         [HttpPost]
-        public IActionResult Accidents(string month, string day, Nullable<int> hour)
+        public IActionResult Accidents(float motorcycle)
         {
             return RedirectToAction("Accidents", new 
             { 
-                month = month,
-                day = day,
-                hour = hour
+                motorcycle = motorcycle
             });
         }
 

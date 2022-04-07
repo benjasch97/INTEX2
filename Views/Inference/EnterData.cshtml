@@ -15,10 +15,70 @@
     </select>
 
     <label class="m-2 p-2">Pedestrian involved:</label>
-    <select name="motorcycle" class="m-2 p-1" asp-for="PEDESTRIAN_INVOLVED">
+    <select name="pedestrian" class="m-2 p-1" asp-for="PEDESTRIAN_INVOLVED">
         <option value="0.0">FALSE</option>
         <option value="1.0">TRUE</option>
     </select>
+
+    <label class="m-2 p-2">Overtern/rollover:</label>
+    <select name="overturn" class="m-2 p-1" asp-for="OVERTURN_ROLLOVER">
+        <option value="0.0">FALSE</option>
+        <option value="1.0">TRUE</option>
+    </select>
+
+    <label class="m-2 p-2">Bicyclist involved:</label>
+    <select name="bicycle" class="m-2 p-1" asp-for="BICYCLIST_INVOLVED">
+        <option value="0.0">FALSE</option>
+        <option value="1.0">TRUE</option>
+    </select>
+
+    <label class="m-2 p-2">Unrestrained:</label>
+    <select name="unrestrained" class="m-2 p-1" asp-for="UNRESTRAINED">
+        <option value="0.0">FALSE</option>
+        <option value="1.0">TRUE</option>
+    </select>
+
+    <label class="m-2 p-2">Intersection-related:</label>
+    <select name="intersection" class="m-2 p-1" asp-for="INTERSECTION_RELATED">
+        <option value="0.0">FALSE</option>
+        <option value="1.0">TRUE</option>
+    </select>
+
+    <label class="m-2 p-2">DUI:</label>
+    <select name="dui" class="m-2 p-1" asp-for="DUI">
+        <option value="0.0">FALSE</option>
+        <option value="1.0">TRUE</option>
+    </select>
+
+    <label class="m-2 p-2">At night/dark conditions:</label>
+    <select name="night" class="m-2 p-1" asp-for="NIGHT_DARK_CONDITION">
+        <option value="0.0">FALSE</option>
+        <option value="1.0">TRUE</option>
+    </select>
+
+    <label class="m-2 p-2">Roadway departure:</label>
+    <select name="roadwaydeparture" class="m-2 p-1" asp-for="ROADWAY_DEPARTURE">
+        <option value="0.0">FALSE</option>
+        <option value="1.0">TRUE</option>
+    </select>
+
+    <label class="m-2 p-2">Single vehicle:</label>
+    <select name="singlevehicle" class="m-2 p-1" asp-for="SINGLE_VEHICLE">
+        <option value="0.0">FALSE</option>
+        <option value="1.0">TRUE</option>
+    </select>
+
+    <input type="hidden" asp-for="MONTH" value="Jan" />
+    <input type="hidden" asp-for="DAY_OF_WEEK" value="Friday" />
+    <input type="hidden" asp-for="YEAR" value="2019" />
+    <input type="hidden" asp-for="MONTH" value="Jan" />
+    <input type="hidden" asp-for="ROUTE" value="15" />
+    <input type="hidden" asp-for="LAT_UTM_Y" value="4,488,307" />
+    <input type="hidden" asp-for="LONG_UTM_X" value="418,897" />
+    <input type="hidden" asp-for="MAIN_ROAD_NAME" value="MAIN ST" />
+    <input type="hidden" asp-for="CITY" value="Nephi" />
+    <input type="hidden" asp-for="COUNTY_NAME" value="UTAH" />
+    <input type="hidden" asp-for="HOUR" value="1" />
 
     <button type="submit" class="btn btn-primary float-right m-2 p-1">Apply filter</button>
 

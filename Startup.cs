@@ -7,7 +7,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.ML.OnnxRuntime;
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,23 +29,21 @@ namespace INTEX2
         {
             services.AddControllersWithViews();
 
-            services.AddSingleton<InferenceSession>(
-                new InferenceSession("intex (1).onnx"));
-
             services.AddDbContext<AccidentsDbContext>(options =>
             {
                 options.UseMySql(Configuration["ConnectionStrings:AccidentsDbConnection"]);
             });
 
-            services.AddDbContext<AppIdentityDBContext>(options =>
-                options.UseSqlite(Configuration["ConnectionStrings:IdentityConnection"]));
+            //services.AddDbContext<AppIdentityDBContext>(options =>
+            //    options.UseSqlite(Configuration["ConnectionStrings:IdentityConnection"]));
 
-            services.AddIdentity<IdentityUser, IdentityRole>()
-                .AddEntityFrameworkStores<AppIdentityDBContext>();
+            //services.AddIdentity<IdentityUser, IdentityRole>()
+            //    .AddEntityFrameworkStores<AppIdentityDBContext>();
 
             services.AddScoped<IAccidentsRepository, EFAccidentsRepository>();
 
-
+            services.AddSingleton<InferenceSession>(
+                new InferenceSession("intex (2).onnx"));
 
 
             services.AddRazorPages();
@@ -80,33 +77,6 @@ namespace INTEX2
 
             app.UseEndpoints(endpoints =>
             {
-                //endpoints.MapControllerRoute("MonthDayHourPaging",
-                //    "{controller=Home}/{action=Accidents}/{month}/{day}/Hour{hour}/Page{pageNum}",
-                //    new { Controller = "Home", Action = "Accidents", pageNum = 1 });
-
-                //endpoints.MapControllerRoute("MonthDayPaging",
-                //    "{controller=Home}/{action=Accidents}/{month}/{day}/Page{pageNum}",
-                //    new { Controller = "Home", Action = "Accidents", pageNum = 1 });
-
-                //endpoints.MapControllerRoute("MonthHourPaging",
-                //    "{controller=Home}/{action=Accidents}/{month}/Hour{hour}/Page{pageNum}",
-                //    new { Controller = "Home", Action = "Accidents", pageNum = 1 });
-
-                //endpoints.MapControllerRoute("DayHourPaging",
-                //    "{controller=Home}/{action=Accidents}/{day}/Hour{hour}/Page{pageNum}",
-                //    new { Controller = "Home", Action = "Accidents", pageNum = 1 });
-
-                //endpoints.MapControllerRoute("MonthPaging",
-                //    "{controller=Home}/{action=Accidents}/{month}/Page{pageNum}",
-                //    new { Controller = "Home", Action = "Accidents", pageNum = 1 });
-
-                endpoints.MapControllerRoute("DayPaging",
-                    "{controller=Home}/{action=Accidents}/{day}/Page{pageNum}",
-                    new { Controller = "Home", Action = "Accidents", pageNum = 1 });
-
-                //endpoints.MapControllerRoute("HourPaging",
-                //    "{controller=Home}/{action=Accidents}/Hour{hour}/Page{pageNum}",
-                //    new { Controller = "Home", Action = "Accidents", pageNum = 1 });
 
                 endpoints.MapControllerRoute("Paging",
                     "Page{pageNum}",
@@ -115,6 +85,7 @@ namespace INTEX2
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+
                 endpoints.MapRazorPages();
                 endpoints.MapBlazorHub();
 
@@ -122,7 +93,7 @@ namespace INTEX2
 
             });
 
-            IdentitySeedData.EnsurePopulated(app);
+            //IdentitySeedData.EnsurePopulated(app);
 
 
         }

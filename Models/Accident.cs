@@ -47,10 +47,12 @@ namespace INTEX2.Models
         {
             float[] data = new float[]
             {
-                MOTORCYCLE_INVOLVED, PEDESTRIAN_INVOLVED
+                MOTORCYCLE_INVOLVED, PEDESTRIAN_INVOLVED, OVERTURN_ROLLOVER, BICYCLIST_INVOLVED, UNRESTRAINED, INTERSECTION_RELATED,
+                DUI, NIGHT_DARK_CONDITION, ROADWAY_DEPARTURE, SINGLE_VEHICLE
             };
-            int[] dimmensions = new int[] { 1, 8 };
-            return new DenseTensor<float>(data, dimmensions);
+            int[] dimensions = new int[] { 1, 10 };
+            return new DenseTensor<float>(data, dimensions);
+            
         }
     }
 }

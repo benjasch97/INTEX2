@@ -9,16 +9,13 @@
 <div class="card">
 
     <form method="post">
-        <label class="m-2 p-2">Month:</label>
-        <select name="month" class="m-2 p-1">
-            <option></option>
-            @foreach (var m in ViewBag.Months)
-            {
-                <option value="@m">@m</option>
-            }
+        <label class="m-2 p-2">Motorcycle involved:</label>
+        <select name="motorcycle" class="m-2 p-1">
+            <option value="0.0">FALSE</option>
+            <option value="1.0">TRUE</option>
         </select>
 
-        <label class="m-2 p-2">Day of the week:</label>
+        @*<label class="m-2 p-2">Day of the week:</label>
         <select name="day" class="m-2 p-1">
             <option></option>
             @foreach (var d in ViewBag.Weekdays)
@@ -34,7 +31,7 @@
             {
                 <option value="@h">@h</option>
             }
-        </select>
+        </select>*@
 
         <a asp-controller="Home" asp-action="Accidents" class="btn btn-secondary float-right m-2 p-1">Reset filter</a>
         <button type="submit" class="btn btn-primary float-right m-2 p-1">Apply filter</button>
