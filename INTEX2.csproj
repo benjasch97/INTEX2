@@ -41,4 +41,10 @@
     <Folder Include="Pages\Admin\" />
     <Folder Include="Views\Account\" />
   </ItemGroup>
+
+
+
+  <ItemGroup>
+    <Folder Include="Components\" />
+  </ItemGroup>
 </Project>
