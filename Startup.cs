@@ -8,6 +8,12 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.ML.OnnxRuntime;
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+
 namespace INTEX2
 {
     public class Startup
@@ -39,8 +45,13 @@ namespace INTEX2
                 .AddEntityFrameworkStores<AppIdentityDBContext>();
 
             services.AddScoped<IAccidentsRepository, EFAccidentsRepository>();
+
+
+
+
             services.AddRazorPages();
             services.AddServerSideBlazor();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
