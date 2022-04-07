@@ -1,0 +1,27 @@
+﻿@page "/admin"
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
+@model INTEX2.Pages.Admin.IndexModel
+@{
+}
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Utah Motor Accidents Admin</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="icon" type="image/x-icon" href="~/img/lovepik-car-icon-png-image_401452256_wh1200.png" />
+
+    <base href="/" />
+</head>
+
+<body>
+
+    <component type="typeof(Routed)" render-mode="Server" />
+    <script src="/_framework/blazor.server.js"></script>
+</body>
+
+
+</html>
