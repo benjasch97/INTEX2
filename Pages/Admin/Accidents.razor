@@ -11,9 +11,13 @@
             <th>Crash ID</th>
             <th>Crash Date Time</th>
             <th>Route</th>
+<<<<<<< Updated upstream
 
         </tr>
 
+=======
+        </tr>
+>>>>>>> Stashed changes
     </thead>
 
     @if (AccidentData?.Count() > 0)
@@ -25,6 +29,7 @@
                 <td>@a.CRASH_ID</td>
                 <td>@a.CRASH_DATETIME</td>
                 <td>@a.ROUTE</td>
+<<<<<<< Updated upstream
           
 
                 <td>
@@ -38,6 +43,8 @@
                 <td>
                     <button class="btn btn-danger btn-sm" @onclick="@(x => RemoveAccident(a))">Delete</button>
                 </td>
+=======
+>>>>>>> Stashed changes
             </tr>
         }
     }
@@ -49,8 +56,11 @@
     }
 </table>
 
+<<<<<<< Updated upstream
 <NavLink class="btn btn-primary" href="/admin/accidents/create"></NavLink>
 
+=======
+>>>>>>> Stashed changes
 @code {
 
     public INTEX2.Models.IAccidentsRepository repo => Service;
@@ -63,6 +73,7 @@
     }
     public async Task UpdateData()
     {
+<<<<<<< Updated upstream
         AccidentData = await repo.mytable.Take(50).ToListAsync();
     }
 
@@ -75,3 +86,9 @@
     }
 
 }
+=======
+        AccidentData = await repo.mytable.ToListAsync();
+    }
+
+}
+>>>>>>> Stashed changes

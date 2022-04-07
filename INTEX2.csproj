@@ -47,4 +47,21 @@
   <ItemGroup>
     <Folder Include="Components\" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Pages\" />
+    <Folder Include="Pages\Admin\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Admin\Index.cshtml" />
+    <Content Include="Pages\_ViewImports.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Pages\Admin\Index.cshtml.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Pages\Admin\AdminLayout.razor" />
+    <None Include="Pages\Admin\Accidents.razor" />
+    <None Include="Pages\Admin\_Imports.razor" />
+    <None Include="Pages\Admin\Routed.razor" />
+  </ItemGroup>
 </Project>

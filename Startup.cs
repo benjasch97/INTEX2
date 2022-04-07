@@ -23,6 +23,10 @@ namespace INTEX2
         {
             services.AddControllersWithViews();
 
+            services.AddRazorPages();
+            services.AddServerSideBlazor();
+
+
             services.AddDbContext<AccidentsDbContext>(options =>
             {
                 options.UseMySql(Configuration["ConnectionStrings:AccidentsDbConnection"]);
@@ -35,8 +39,12 @@ namespace INTEX2
                 .AddEntityFrameworkStores<AppIdentityDBContext>();
 
             services.AddScoped<IAccidentsRepository, EFAccidentsRepository>();
+<<<<<<< Updated upstream
             services.AddRazorPages();
             services.AddServerSideBlazor();
+=======
+
+>>>>>>> Stashed changes
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -100,11 +108,18 @@ namespace INTEX2
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
                 endpoints.MapRazorPages();
                 endpoints.MapBlazorHub();
 
                 endpoints.MapFallbackToPage("/admin/{*catchall}", "/Admin/Index");
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
             });
 
             IdentitySeedData.EnsurePopulated(app);
