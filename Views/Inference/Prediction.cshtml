@@ -1,9 +1,13 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    ViewData["Title"] = "Predicted Severity";
 }
 
 @model INTEX2.Models.Prediction
 
-<h1>Score: @Model.PredictedValue</h1>
+<div style="margin:auto">
+
+    <h1>Predicted severity: @Model.PredictedValue</h1>
+
+    <a asp-controller="Inference" asp-action="EnterData" class="btn m-2 p-1 text-white" style="background-color: rgb(81, 107, 82);">Back to predictor</a>
+
+</div>

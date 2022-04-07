@@ -12,25 +12,25 @@
 
         <div class="col-4">
             <label class="m-2 p-2">Motorcycle involved:</label>
-            <select name="motorcycle" class="m-2 p-1">
+            <select name="motorcycle" class="m-2 p-1" style="justify-content: right; float: right">
                 <option value="0.0">FALSE</option>
                 <option value="1.0">TRUE</option>
             </select>
             <br />
             <label class="m-2 p-2">Pedestrian involved:</label>
-            <select name="pedestrian" class="m-2 p-1">
+            <select name="pedestrian" class="m-2 p-1" style="justify-content: right; float: right">
                 <option value="0.0">FALSE</option>
                 <option value="1.0">TRUE</option>
             </select>
             <br />
             <label class="m-2 p-2">Overtern/rollover:</label>
-            <select name="overturn" class="m-2 p-1">
+            <select name="overturn" class="m-2 p-1" style="justify-content: right; float: right">
                 <option value="0.0">FALSE</option>
                 <option value="1.0">TRUE</option>
             </select>
             <br />
             <label class="m-2 p-2">Bicyclist involved:</label>
-            <select name="bicycle" class="m-2 p-1">
+            <select name="bicycle" class="m-2 p-1" style="justify-content: right; float: right">
                 <option value="0.0">FALSE</option>
                 <option value="1.0">TRUE</option>
             </select>
@@ -38,19 +38,19 @@
 
         <div class="col-4">
             <label class="m-2 p-2">Unrestrained:</label>
-            <select name="unrestrained" class="m-2 p-1">
+            <select name="unrestrained" class="m-2 p-1" style="justify-content: right; float: right">
                 <option value="0.0">FALSE</option>
                 <option value="1.0">TRUE</option>
             </select>
             <br />
             <label class="m-2 p-2">Intersection-related:</label>
-            <select name="intersection" class="m-2 p-1">
+            <select name="intersection" class="m-2 p-1" style="justify-content: right; float: right">
                 <option value="0.0">FALSE</option>
                 <option value="1.0">TRUE</option>
             </select>
             <br />
             <label class="m-2 p-2">DUI:</label>
-            <select name="dui" class="m-2 p-1">
+            <select name="dui" class="m-2 p-1" style="justify-content: right; float: right">
                 <option value="0.0">FALSE</option>
                 <option value="1.0">TRUE</option>
             </select>
@@ -59,42 +59,45 @@
 
         <div class="col-4">
             <label class="m-2 p-2">At night/dark conditions:</label>
-            <select name="night" class="m-2 p-1">
+            <select name="night" class="m-2 p-1" style="justify-content: right; float: right">
                 <option value="0.0">FALSE</option>
                 <option value="1.0">TRUE</option>
             </select>
             <br />
             <label class="m-2 p-2">Roadway departure:</label>
-            <select name="roadwaydeparture" class="m-2 p-1">
+            <select name="roadwaydeparture" class="m-2 p-1" style="justify-content: right; float: right">
                 <option value="0.0">FALSE</option>
                 <option value="1.0">TRUE</option>
             </select>
             <br />
             <label class="m-2 p-2">Single vehicle:</label>
-            <select name="singlevehicle" class="m-2 p-1">
+            <select name="singlevehicle" class="m-2 p-1" style="justify-content: right; float: right">
                 <option value="0.0">FALSE</option>
                 <option value="1.0">TRUE</option>
             </select>
             <br />
             <a asp-controller="Home" asp-action="Accidents" asp-route-pageNum="1" class="btn btn-secondary float-right m-2 p-1">Reset filter</a>
-            <button type="submit" class="btn btn-primary float-right m-2 p-1">Apply filter</button>
+            <button type="submit" class="btn btn-primary float-right m-2 p-1" style="background-color: rgb(81, 107, 82);">Apply filter</button>
         </div>
 
     </form>
 </div>
 <br />
 
-<div class="align-center">
+<div class="col-6" style="margin: auto; justify-content: center; text-align: center">
     <div page-model="@Model.PageInfo" page-action="Accidents" page-class="btn"
-         page-class-normal="btn-outline-dark" page-class-selected="btn-primary"
-         page-classes-enabled="true" class="btn-group m-1" style="text-align: center"></div>
+         page-class-normal="btn-outline-dark" page-class-selected="btn-dark"
+         page-classes-enabled="true" class="btn-group" style="margin: auto; justify-content: center"></div>
 </div>
 
-    <ul>
+    <ul class="col-6" style="margin: auto">
         @foreach (var a in Model.mytable)
         {
-            <li>@a.CRASH_ID: @a.YEAR - @a.CITY, Severity: @a.CRASH_SEVERITY_ID</li>
-        }
+            <li class="card m-1 p-1"><h4 class="bg-secondary text-light">Crash ID: @a.CRASH_ID</h4>
+                Date: @a.MONTH @a.YEAR<br />
+                Location: @a.CITY<br />
+                Severity: @a.CRASH_SEVERITY_ID</li>
+        } <br />
     </ul>
 
     

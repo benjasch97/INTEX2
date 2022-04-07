@@ -1,6 +1,7 @@
 using INTEX2.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -32,6 +33,15 @@ namespace INTEX2
             services.AddDbContext<AccidentsDbContext>(options =>
             {
                 options.UseMySql(Configuration["ConnectionStrings:AccidentsDbConnection"]);
+            });
+
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                // This lambda determines whether user consent for non-essential 
+                // cookies is needed for a given request.
+                options.CheckConsentNeeded = context => true;
+                // requires using Microsoft.AspNetCore.Http;
+                options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
             //services.AddDbContext<AppIdentityDBContext>(options =>
@@ -70,10 +80,16 @@ namespace INTEX2
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseCookiePolicy();
 
 
             app.UseAuthorization();
-          
+
+            app.Use(async (context, next) =>
+            {
+                context.Response.Headers.Add("Content-Security-Policy-Report-Only", "default-src 'self'");
+                await next();
+            });
 
             app.UseEndpoints(endpoints =>
             {
