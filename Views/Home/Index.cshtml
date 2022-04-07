@@ -1,27 +1,45 @@
 ﻿@{
     ViewData["Title"] = "Home";
+    ViewData["h1"] = "Utah Motor Vehicle Collision Report";
+    ViewData["secret"] = "IS IS worth it!";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Utah Motor Vehicle Collision Report</h1>
-</div>
+
 
 <p>This website is meant to be used as a resource for lawmakers in Utah to better understand the causes and other relevant
-    information concerning motor vehicle collisions in Utah. At the top of each page, there is a navigation bar with links
-    to other helpful pages. A brief description of each of these pages is shown below:
+    information concerning motor vehicle collisions in Utah. Through carefully analyzing over 200,000 car accidents, in the state
+    of Utah between the years of 2016 and 2019, the following have been determind to be the top 10 most impactful factors influencing
+    the severity of a car crash (not in order):
+    <ul>
+        <li>Involvement of a motorcyclist</li>
+        <li>Involvement of a pedestrian</li>
+        <li>A crash resulting in the car being overturned</li>
+        <li>Involvement of a bicyclist</li>
+        <li>Driver/passengers being unrestrained</li>
+        <li>Involvement of an intersection</li>
+        <li>Drivers being under the influence (DUI)</li>
+        <li>Night/dark conditions</li>
+        <li>Departure from roadway</li>
+        <li>A crash involving multiple vehicles</li>
+    </ul>
+    
+    The other pages of this website are aimed at helping lawmakers and other stakeholders understand how these factors relate to and
+    impact severity. At the top of each page, there is a navigation bar with links to other helpful pages. 
+    A brief description of each of these pages is shown below:
     <ul>
         <li>Accidents</li>
         <ul>
             <li>
                 This page contains a list of motor vehicle accidents from the years 2016, 2017, and 2019 containing pertinent 
-                information such as... [NEED TO ADD INFO HERE]
+                information such as the year the accident occurred, city in which it occurred, the severity of the accident, and
+                other information regarding the accident.
             </li>
         </ul>
         <li>Predictor</li>
         <ul>
             <li>
                 This page contains a tool that has been created using machine learning and data analytics to predict the 
-                likelihood that an accident is likely to occur based on a variety of factors.
+                likelihood that an accident is likely to occur based on the 10 factors listed above.
             </li>
         </ul>
         <li>Admin</li>

@@ -32,9 +32,9 @@ namespace INTEX2.Controllers
                 NamedOnnxValue.CreateFromTensor("float_input", data.AsTensor())
             });
             Tensor<float> score = result.First().AsTensor<float>();
-            var prediction = new Prediction { PredictedValue = score.First() };
+            var prediction = new Prediction { PredictedValue = (float) Math.Round(score.First()) };
             result.Dispose();
-            return View("Score", prediction);
+            return View("Prediction", prediction);
         }
     }
 }

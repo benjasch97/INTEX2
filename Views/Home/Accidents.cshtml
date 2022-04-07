@@ -8,48 +8,93 @@
 
 <div class="card">
 
-    <form method="post">
-        <label class="m-2 p-2">Month:</label>
-        <select name="month" class="m-2 p-1">
-            <option></option>
-            @foreach (var m in ViewBag.Months)
-            {
-                <option value="@m">@m</option>
-            }
-        </select>
+    <form method="post" class="row">
 
-        <label class="m-2 p-2">Day of the week:</label>
-        <select name="day" class="m-2 p-1">
-            <option></option>
-            @foreach (var d in ViewBag.Weekdays)
-            {
-                <option value="@d">@d</option>
-            }
-        </select>
+        <div class="col-4">
+            <label class="m-2 p-2">Motorcycle involved:</label>
+            <select name="motorcycle" class="m-2 p-1">
+                <option value="0.0">FALSE</option>
+                <option value="1.0">TRUE</option>
+            </select>
+            <br />
+            <label class="m-2 p-2">Pedestrian involved:</label>
+            <select name="pedestrian" class="m-2 p-1">
+                <option value="0.0">FALSE</option>
+                <option value="1.0">TRUE</option>
+            </select>
+            <br />
+            <label class="m-2 p-2">Overtern/rollover:</label>
+            <select name="overturn" class="m-2 p-1">
+                <option value="0.0">FALSE</option>
+                <option value="1.0">TRUE</option>
+            </select>
+            <br />
+            <label class="m-2 p-2">Bicyclist involved:</label>
+            <select name="bicycle" class="m-2 p-1">
+                <option value="0.0">FALSE</option>
+                <option value="1.0">TRUE</option>
+            </select>
+        </div>
 
-        <label class="m-2 p-2">Hour in the day:</label>
-        <select name="hour" class="m-2 p-1">
-            <option></option>
-            @foreach (var h in ViewBag.Hours)
-            {
-                <option value="@h">@h</option>
-            }
-        </select>
+        <div class="col-4">
+            <label class="m-2 p-2">Unrestrained:</label>
+            <select name="unrestrained" class="m-2 p-1">
+                <option value="0.0">FALSE</option>
+                <option value="1.0">TRUE</option>
+            </select>
+            <br />
+            <label class="m-2 p-2">Intersection-related:</label>
+            <select name="intersection" class="m-2 p-1">
+                <option value="0.0">FALSE</option>
+                <option value="1.0">TRUE</option>
+            </select>
+            <br />
+            <label class="m-2 p-2">DUI:</label>
+            <select name="dui" class="m-2 p-1">
+                <option value="0.0">FALSE</option>
+                <option value="1.0">TRUE</option>
+            </select>
+            <br />
+        </div>
 
-        <a asp-controller="Home" asp-action="Accidents" class="btn btn-secondary float-right m-2 p-1">Reset filter</a>
-        <button type="submit" class="btn btn-primary float-right m-2 p-1">Apply filter</button>
+        <div class="col-4">
+            <label class="m-2 p-2">At night/dark conditions:</label>
+            <select name="night" class="m-2 p-1">
+                <option value="0.0">FALSE</option>
+                <option value="1.0">TRUE</option>
+            </select>
+            <br />
+            <label class="m-2 p-2">Roadway departure:</label>
+            <select name="roadwaydeparture" class="m-2 p-1">
+                <option value="0.0">FALSE</option>
+                <option value="1.0">TRUE</option>
+            </select>
+            <br />
+            <label class="m-2 p-2">Single vehicle:</label>
+            <select name="singlevehicle" class="m-2 p-1">
+                <option value="0.0">FALSE</option>
+                <option value="1.0">TRUE</option>
+            </select>
+            <br />
+            <a asp-controller="Home" asp-action="Accidents" asp-route-pageNum="1" class="btn btn-secondary float-right m-2 p-1">Reset filter</a>
+            <button type="submit" class="btn btn-primary float-right m-2 p-1">Apply filter</button>
+        </div>
 
     </form>
 </div>
 <br />
 
-    <ol>
-        @foreach (var a in Model.mytable)
-        {
-            <li>@a.CRASH_ID @a.CITY</li>
-        }
-    </ol>
-
+<div class="align-center">
     <div page-model="@Model.PageInfo" page-action="Accidents" page-class="btn"
          page-class-normal="btn-outline-dark" page-class-selected="btn-primary"
-         page-classes-enabled="true" class="btn-group pull-right m-1"></div>
+         page-classes-enabled="true" class="btn-group m-1" style="text-align: center"></div>
+</div>
+
+    <ul>
+        @foreach (var a in Model.mytable)
+        {
+            <li>@a.CRASH_ID: @a.YEAR - @a.CITY, Severity: @a.CRASH_SEVERITY_ID</li>
+        }
+    </ul>
+
+    

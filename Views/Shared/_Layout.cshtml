@@ -6,6 +6,7 @@
     <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="icon" type="image/x-icon" href="~/img/lovepik-car-icon-png-image_401452256_wh1200.png"/>
 </head>
 <body>
     <header style="background-color: rgb(81, 107, 82);">
@@ -24,7 +25,7 @@
                             <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Accidents">Accidents</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Predictor">Predictor</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Inference" asp-action="EnterData">Predictor</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Admin">Admin</a>
@@ -33,7 +34,10 @@
                 </div>
             </div>
         </nav>
+        <h1 class="display-4 text-light text-center" style="background-color: rgb(81, 107, 82);">@ViewData["h1"]</h1>
+        <h4 class="text-center" style="color: rgb(81, 107, 82);">@ViewData["secret"]</h4>
     </header>
+    
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()

@@ -8,7 +8,6 @@
     <None Remove="Microsoft.EntityFrameworkCore" />
     <None Remove="Pomelo.EntityFrameworkCore.MySql" />
     <None Remove="Pages\" />
-    <None Remove="Pages\Admin\" />
     <None Remove="Microsoft.AspNetCore.Identity.EntityFrameworkCore" />
     <None Remove="Microsoft.Data.Sqlite.Core" />
     <None Remove="Microsoft.EntityFrameworkCore.Sqlite" />
@@ -39,9 +38,6 @@
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.22" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Pages\" />
-    <Folder Include="Pages\Admin\" />
-    <Folder Include="Views\Account\" />
     <Folder Include="Areas\Identity\Data\" />
   </ItemGroup>
 
