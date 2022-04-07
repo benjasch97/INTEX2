@@ -1,0 +1,220 @@
+﻿@page "/admin/accidents/edit/{id:long}"
+@page "/admin/accidents/create"
+@inherits OwningComponentBase<INTEX2.Models.IAccidentsRepository>
+
+
+<style>
+    div.validation-message {
+        color: rgb(220,53,69);
+        font-weight: 500
+    }
+</style>
+
+<EditForm Model="a" OnValidSubmit="SaveAccident">
+
+    <div class="form-group">
+        <label>Crash ID</label>
+        <input class="form-control" disabled value="@a.CRASH_ID" />
+    </div>
+
+    <div class="form-group">
+        <label>Route</label>
+        <ValidationMessage For="@(() => a.ROUTE)"></ValidationMessage>
+        <InputText class="form-control" @bind-Value="a.ROUTE"></InputText>
+    </div>
+
+    <div class="form-group">
+        <label>Month</label>
+        <ValidationMessage For="@(() => a.MONTH)"></ValidationMessage>
+        <InputText class="form-control" @bind-Value="a.MONTH"></InputText>
+    </div>
+
+    <div class="form-group">
+        <label>Day of week</label>
+        <ValidationMessage For="@(() => a.DAY_OF_WEEK)"></ValidationMessage>
+        <InputText class="form-control" @bind-Value="a.DAY_OF_WEEK"></InputText>
+    </div>
+
+    <div class="form-group">
+        <label>Year</label>
+        <ValidationMessage For="@(() => a.YEAR)"></ValidationMessage>
+        <InputNumber class="form-control" @bind-Value="a.YEAR"></InputNumber>
+    </div>
+
+    <div class="form-group">
+        <label>Hour</label>
+        <ValidationMessage For="@(() => a.HOUR)"></ValidationMessage>
+        <InputNumber class="form-control" @bind-Value="a.HOUR"></InputNumber>
+    </div>
+
+    <div class="form-group">
+        <label>Milepoint</label>
+        <ValidationMessage For="@(() => a.MILEPOINT)"></ValidationMessage>
+        <InputNumber class="form-control" @bind-Value="a.MILEPOINT"></InputNumber>
+    </div>
+
+    <div class="form-group">
+        <label>Latitude</label>
+        <ValidationMessage For="@(() => a.LAT_UTM_Y)"></ValidationMessage>
+        <InputText class="form-control" @bind-Value="a.LAT_UTM_Y"></InputText>
+    </div>
+
+    <div class="form-group">
+        <label>Longitude</label>
+        <ValidationMessage For="@(() => a.LONG_UTM_X)"></ValidationMessage>
+        <InputText class="form-control" @bind-Value="a.LONG_UTM_X"></InputText>
+    </div>
+    <div class="form-group">
+        <label>Main Road Name</label>
+        <ValidationMessage For="@(() => a.MAIN_ROAD_NAME)"></ValidationMessage>
+        <InputText class="form-control" @bind-Value="a.MAIN_ROAD_NAME"></InputText>
+    </div>
+    <div class="form-group">
+        <label>City</label>
+        <ValidationMessage For="@(() => a.CITY)"></ValidationMessage>
+        <InputText class="form-control" @bind-Value="a.CITY"></InputText>
+    </div>
+    <div class="form-group">
+        <label>County Name</label>
+        <ValidationMessage For="@(() => a.COUNTY_NAME)"></ValidationMessage>
+        <InputText class="form-control" @bind-Value="a.COUNTY_NAME"></InputText>
+    </div>
+    <div class="form-group">
+        <label>Crash Severity ID</label>
+        <ValidationMessage For="@(() => a.CRASH_SEVERITY_ID)"></ValidationMessage>
+        <InputNumber class="form-control" @bind-Value="a.CRASH_SEVERITY_ID"></InputNumber>
+    </div>
+    <div class="form-group">
+        <label>Work Zone Related</label>
+        <ValidationMessage For="@(() => a.WORK_ZONE_RELATED)"></ValidationMessage>
+        <InputNumber class="form-control" @bind-Value="a.PEDESTRIAN_INVOLVED"></InputNumber>
+    </div>
+    <div class="form-group">
+        <label>Motorcyclist Involved</label>
+        <ValidationMessage For="@(() => a.MOTORCYCLE_INVOLVED)"></ValidationMessage>
+        <InputNumber class="form-control" @bind-Value="a.MOTORCYCLE_INVOLVED"></InputNumber>
+    </div>
+    <div class="form-group">
+        <label>Improper Restraint</label>
+        <ValidationMessage For="@(() => a.IMPROPER_RESTRAINT)"></ValidationMessage>
+        <InputNumber class="form-control" @bind-Value="a.IMPROPER_RESTRAINT"></InputNumber>
+    </div>
+    <div class="form-group">
+        <label>Unrestrained</label>
+        <ValidationMessage For="@(() => a.UNRESTRAINED)"></ValidationMessage>
+        <InputNumber class="form-control" @bind-Value="a.UNRESTRAINED"></InputNumber>
+    </div>
+    <div class="form-group">
+        <label>DUI</label>
+        <ValidationMessage For="@(() => a.DUI)"></ValidationMessage>
+        <InputNumber class="form-control" @bind-Value="a.DUI"></InputNumber>
+    </div>
+    <div class="form-group">
+        <label>Intersection Related</label>
+        <ValidationMessage For="@(() => a.INTERSECTION_RELATED)"></ValidationMessage>
+        <InputNumber class="form-control" @bind-Value="a.INTERSECTION_RELATED"></InputNumber>
+    </div>
+    <div class="form-group">
+        <label>Wild Animal Related</label>
+        <ValidationMessage For="@(() => a.WILD_ANIMAL_RELATED)"></ValidationMessage>
+        <InputNumber class="form-control" @bind-Value="a.WILD_ANIMAL_RELATED"></InputNumber>
+    </div>
+    <div class="form-group">
+        <label>Domestic Animal</label>
+        <ValidationMessage For="@(() => a.DOMESTIC_ANIMAL_RELATED)"></ValidationMessage>
+        <InputNumber class="form-control" @bind-Value="a.DOMESTIC_ANIMAL_RELATED"></InputNumber>
+    </div>
+    <div class="form-group">
+        <label>Overturn Rollover</label>
+        <ValidationMessage For="@(() => a.OVERTURN_ROLLOVER)"></ValidationMessage>
+        <InputNumber class="form-control" @bind-Value="a.OVERTURN_ROLLOVER"></InputNumber>
+    </div>
+    <div class="form-group">
+        <label>Commercial Motor Involved</label>
+        <ValidationMessage For="@(() => a.COMMERCIAL_MOTOR_VEH_INVOLVED)"></ValidationMessage>
+        <InputNumber class="form-control" @bind-Value="a.COMMERCIAL_MOTOR_VEH_INVOLVED"></InputNumber>
+    </div>
+    <div class="form-group">
+        <label>Teenage Driver Involved</label>
+        <ValidationMessage For="@(() => a.TEENAGE_DRIVER_INVOLVED)"></ValidationMessage>
+        <InputNumber class="form-control" @bind-Value="a.TEENAGE_DRIVER_INVOLVED"></InputNumber>
+    </div>
+    <div class="form-group">
+        <label>Older Driver Involved</label>
+        <ValidationMessage For="@(() => a.OLDER_DRIVER_INVOLVED)"></ValidationMessage>
+        <InputNumber class="form-control" @bind-Value="a.OLDER_DRIVER_INVOLVED"></InputNumber>
+    </div>
+    <div class="form-group">
+        <label>Night Dark Condition</label>
+        <ValidationMessage For="@(() => a.NIGHT_DARK_CONDITION)"></ValidationMessage>
+        <InputNumber class="form-control" @bind-Value="a.NIGHT_DARK_CONDITION"></InputNumber>
+    </div>
+    <div class="form-group">
+        <label>Single Vehicle</label>
+        <ValidationMessage For="@(() => a.SINGLE_VEHICLE)"></ValidationMessage>
+        <InputNumber class="form-control" @bind-Value="a.SINGLE_VEHICLE"></InputNumber>
+    </div>
+    <div class="form-group">
+        <label>Distracted Driving</label>
+        <ValidationMessage For="@(() => a.DISTRACTED_DRIVING)"></ValidationMessage>
+        <InputNumber class="form-control" @bind-Value="a.DISTRACTED_DRIVING"></InputNumber>
+    </div>
+    <div class="form-group">
+        <label>Drowsy Driving</label>
+        <ValidationMessage For="@(() => a.DROWSY_DRIVING)"></ValidationMessage>
+        <InputNumber class="form-control" @bind-Value="a.DROWSY_DRIVING"></InputNumber>
+    </div>
+    <div class="form-group">
+        <label>Roadway Departure</label>
+        <ValidationMessage For="@(() => a.ROADWAY_DEPARTURE)"></ValidationMessage>
+        <InputNumber class="form-control" @bind-Value="a.ROADWAY_DEPARTURE"></InputNumber>
+    </div>
+
+    <button type="submit" class="btn btn-dark">Save</button>
+    <NavLink class="btn btn-secondary" href="/admin">Cancel</NavLink>
+
+
+</EditForm>
+
+
+@code {
+
+    [Parameter]
+    public long Id { get; set; }
+
+    public string ThemeColor => Id == 0 ? "primary" : "warning";
+    public string Titletext => Id == 0 ? "Create" : "Edit";
+
+    public INTEX2.Models.Accident a { get; set; } = new INTEX2.Models.Accident();
+
+    public INTEX2.Models.IAccidentsRepository repo => Service;
+
+    protected override void OnParametersSet()
+    {
+        if (Id != 0)//Existing accident
+        {
+            a = repo.mytable.FirstOrDefault(x => x.CRASH_ID == Id);
+        }
+
+    }
+
+    public void SaveAccident()
+    {
+        if (Id == 0) //New accident
+        {
+            a.CRASH_ID = (repo.mytable.Select(x => x.CRASH_ID).Max() + 1);
+            repo.AddAccident(a);
+        }
+        else
+        {
+            repo.SaveAccident(a);
+
+        }
+
+        NavManager.NavigateTo("/admin");
+    }
+
+    [Inject]
+    public NavigationManager NavManager { get; set; }
+}
+

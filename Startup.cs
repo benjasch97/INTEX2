@@ -35,6 +35,8 @@ namespace INTEX2
                 options.UseMySql(Configuration["ConnectionStrings:AccidentsDbConnection"]);
             });
 
+
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential 
@@ -44,11 +46,11 @@ namespace INTEX2
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            //services.AddDbContext<AppIdentityDBContext>(options =>
-            //    options.UseSqlite(Configuration["ConnectionStrings:IdentityConnection"]));
+            services.AddDbContext<AppIdentityDBContext>(options =>
+                options.UseSqlite(Configuration["ConnectionStrings:IdentityConnection"]));
 
-            //services.AddIdentity<IdentityUser, IdentityRole>()
-            //    .AddEntityFrameworkStores<AppIdentityDBContext>();
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<AppIdentityDBContext>();
 
             services.AddScoped<IAccidentsRepository, EFAccidentsRepository>();
 
@@ -116,7 +118,7 @@ namespace INTEX2
 
             });
 
-            //IdentitySeedData.EnsurePopulated(app);
+            IdentitySeedData.EnsurePopulated(app);
 
 
         }

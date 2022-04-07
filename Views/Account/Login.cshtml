@@ -1,0 +1,47 @@
+﻿@{
+    Layout = null;
+}
+
+@model LoginModel
+
+<html>
+
+<head>
+    <meta name=" viewport" content="width=device-width" />
+    <title>Login</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="~/img/lovepik-car-icon-png-image_401452256_wh1200.png" />
+
+</head>
+
+<body>
+    <div class="text-white p-2" style="background-color: rgb(81, 107, 82);">
+        <span class="navbar-brand m-l-2">Utah Motor Vehicle Collision Administration Page</span>
+    </div>
+
+    <div class="m-1 p-1">
+
+        <div class="text-danger" asp-validation-summary="All"></div>
+
+        <form method="post" asp-controller="Account" asp-action="Login">
+
+            <div class="form-group">
+                <label asp-for="Username">User Name:</label>
+                <input asp-for="Username" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Password">Password:</label>
+                <input asp-for="Password" class="form-control" type="password" />
+            </div>
+
+            <button class="btn btn-dark" type="submit">Log In</button>
+
+            <input type="hidden" asp-for="ReturnUrl" />
+
+        </form>
+    </div>
+</body>
+
+</html>
+

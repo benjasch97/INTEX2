@@ -1,0 +1,32 @@
+﻿@page "/admin/accidents/delete/{id:long}"
+
+<h3 class="text-white text-center p-1" style="background-color: rgb(81, 107, 82);">Delete</h3>
+
+<h4>Are you sure you want to delete accident #@a.CRASH_ID</h4>
+
+<button class="btn btn-light text-dark btn-sm btn-outline-dark" @onclick="@(x => RemoveAccident(a))" href="/admin/accidents">DELETE</button>
+<NavLink class="btn btn-light text-dark" href="/admin/accidents">Cancel</NavLink>
+
+
+@code {
+
+    [Inject]
+    public INTEX2.Models.IAccidentsRepository repo { get; set; }
+
+    [Parameter]
+    public long Id { get; set; }
+
+    public INTEX2.Models.Accident a { get; set; }
+
+    public async Task UpdateData()
+    {
+        await repo.mytable.Take(1000).ToListAsync();
+    }
+
+    public async Task RemoveAccident(INTEX2.Models.Accident a)
+    {
+        repo.DeleteAccident(a);
+        await UpdateData();
+    }
+
+}
