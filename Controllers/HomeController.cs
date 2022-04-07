@@ -26,30 +26,26 @@ namespace INTEX2.Controllers
         }
 
         [HttpGet]
-        public IActionResult Accidents(Nullable<float> motorcycle, int pageNum = 1)
+        public IActionResult Accidents(Nullable<float> motorcycle, Nullable<float> pedestrian, Nullable<float> overturn,
+            Nullable<float> bicyclist, Nullable<float> unrestrained, Nullable<float> intersection, Nullable<float> dui,
+            Nullable<float> night, Nullable<float> roadwaydeparture, Nullable<float> singlevehicle, int pageNum = 1)
         {
             int pageSize = 25000;
-
-            //ViewBag.Months = _repo.mytable
-            //    .Select(x => x.MONTH)
-            //    .Distinct()
-            //    .ToList();
-
-            //ViewBag.Weekdays = _repo.mytable
-            //    .Select(x => x.DAY_OF_WEEK)
-            //    .Distinct()
-            //    .ToList();
-
-            //ViewBag.Hours = _repo.mytable
-            //    .Select(x => x.HOUR)
-            //    .Distinct()
-            //    .OrderBy(x => x)
-            //    .ToList();
 
             var x = new AccidentsViewModel
             {
                 mytable = _repo.mytable
                     .Where(a => a.MOTORCYCLE_INVOLVED == motorcycle || motorcycle == null)
+                    .Where(a => a.PEDESTRIAN_INVOLVED == pedestrian || pedestrian == null)
+                    .Where(a => a.OVERTURN_ROLLOVER == overturn || overturn == null)
+                    .Where(a => a.BICYCLIST_INVOLVED == bicyclist || bicyclist == null)
+                    .Where(a => a.UNRESTRAINED == unrestrained || unrestrained == null)
+                    .Where(a => a.INTERSECTION_RELATED == intersection || intersection == null)
+                    .Where(a => a.DUI == dui || dui == null)
+                    .Where(a => a.NIGHT_DARK_CONDITION == night || night == null)
+                    .Where(a => a.ROADWAY_DEPARTURE == roadwaydeparture || roadwaydeparture == null)
+                    .Where(a => a.SINGLE_VEHICLE == singlevehicle || singlevehicle == null)
+                    .OrderBy(a => a.YEAR)
                     .Skip((pageNum - 1) * pageSize)
                     .Take(pageSize),
 
@@ -65,11 +61,22 @@ namespace INTEX2.Controllers
         }
 
         [HttpPost]
-        public IActionResult Accidents(float motorcycle)
+        public IActionResult Accidents(Nullable<float> motorcycle, Nullable<float> pedestrian, Nullable<float> overturn,
+            Nullable<float> bicyclist, Nullable<float> unrestrained, Nullable<float> intersection, Nullable<float> dui,
+            Nullable<float> night, Nullable<float> roadwaydeparture, Nullable<float> singlevehicle)
         {
             return RedirectToAction("Accidents", new 
             { 
-                motorcycle = motorcycle
+                motorcycle = motorcycle,
+                pedestrian = pedestrian,
+                overturn = overturn,
+                bicyclist = bicyclist,
+                unrestrained = unrestrained,
+                intersection = intersection,
+                dui = dui,
+                night = night,
+                roadwaydeparture = roadwaydeparture,
+                singlevehicle = singlevehicle
             });
         }
 

@@ -43,7 +43,7 @@ namespace INTEX2
             services.AddScoped<IAccidentsRepository, EFAccidentsRepository>();
 
             services.AddSingleton<InferenceSession>(
-                new InferenceSession("intex (2).onnx"));
+                new InferenceSession("intex (3).onnx"));
 
 
             services.AddRazorPages();
@@ -81,6 +81,13 @@ namespace INTEX2
                 endpoints.MapControllerRoute("Paging",
                     "Page{pageNum}",
                     new { Controller = "Home", Action = "Accidents", pageNum = 1});
+
+                endpoints.MapControllerRoute("PagingFilter",
+                    "Page{pageNum}/Motorcycle{motorcycle}/Pedestrian{pedestrian}/Overturn{overturn}/Bicyclist{bicyclist}/" +
+                    "Unrestrained{unrestrained}/Intersection{intersection}/DUI{dui}/Night{night}/RoadwayDeparture{roadwaydeparture}/" +
+                    "SingleVehicle{singlehevicle}",
+                    new { Controller = "Home", Action = "Accidents", pageNum = 1, motorcycle = 0, pedestrian = 0, overturn = 0, 
+                        bicyclist = 0, unrestrained = 0, intersection = 0, dui = 0, night = 0, roadwaydeparture = 0, singlevehicle = 0 });
 
                 endpoints.MapControllerRoute(
                     name: "default",
