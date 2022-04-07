@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.ML.OnnxRuntime;
 
 namespace INTEX2
 {
@@ -22,6 +23,9 @@ namespace INTEX2
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddSingleton<InferenceSession>(
+                new InferenceSession("intex (1).onnx"));
 
             services.AddDbContext<AccidentsDbContext>(options =>
             {

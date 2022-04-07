@@ -1,0 +1,25 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model Accident
+
+<form method="post" asp-controller="Inference" asp-action="Prediction">
+
+    <label class="m-2 p-2">Motorcycle involved:</label>
+    <select name="motorcycle" class="m-2 p-1" asp-for="MOTORCYCLE_INVOLVED">
+        <option value="0.0">FALSE</option>
+        <option value="1.0">TRUE</option>
+    </select>
+
+    <label class="m-2 p-2">Pedestrian involved:</label>
+    <select name="motorcycle" class="m-2 p-1" asp-for="PEDESTRIAN_INVOLVED">
+        <option value="0.0">FALSE</option>
+        <option value="1.0">TRUE</option>
+    </select>
+
+    <button type="submit" class="btn btn-primary float-right m-2 p-1">Apply filter</button>
+
+</form>
