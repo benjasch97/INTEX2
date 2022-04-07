@@ -1,85 +1,92 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    ViewData["Title"] = "Predictor";
 }
 
 @model Accident
 
-<form method="post" asp-controller="Inference" asp-action="Prediction">
+<form method="post" asp-controller="Inference" asp-action="Prediction" class="row">
 
-    <label class="m-2 p-2">Motorcycle involved:</label>
-    <select name="motorcycle" class="m-2 p-1" asp-for="MOTORCYCLE_INVOLVED">
-        <option value="0.0">FALSE</option>
-        <option value="1.0">TRUE</option>
-    </select>
+    <div class="col-4">
 
-    <label class="m-2 p-2">Pedestrian involved:</label>
-    <select name="pedestrian" class="m-2 p-1" asp-for="PEDESTRIAN_INVOLVED">
-        <option value="0.0">FALSE</option>
-        <option value="1.0">TRUE</option>
-    </select>
+        <label class="m-2 p-2">Motorcycle involved:</label>
+        <select name="motorcycle" class="m-2 p-1" style="justify-content: right; float: right">
+            <option value="0.0">FALSE</option>
+            <option value="1.0">TRUE</option>
+        </select>
+        <br />
 
-    <label class="m-2 p-2">Overtern/rollover:</label>
-    <select name="overturn" class="m-2 p-1" asp-for="OVERTURN_ROLLOVER">
-        <option value="0.0">FALSE</option>
-        <option value="1.0">TRUE</option>
-    </select>
+        <label class="m-2 p-2">Pedestrian involved:</label>
+        <select name="pedestrian" class="m-2 p-1" style="justify-content: right; float: right">
+            <option value="0.0">FALSE</option>
+            <option value="1.0">TRUE</option>
+        </select>
+        <br />
 
-    <label class="m-2 p-2">Bicyclist involved:</label>
-    <select name="bicycle" class="m-2 p-1" asp-for="BICYCLIST_INVOLVED">
-        <option value="0.0">FALSE</option>
-        <option value="1.0">TRUE</option>
-    </select>
+        <label class="m-2 p-2">Overtern/rollover:</label>
+        <select name="overturn" class="m-2 p-1" style="justify-content: right; float: right">
+            <option value="0.0">FALSE</option>
+            <option value="1.0">TRUE</option>
+        </select>
+        <br />
 
-    <label class="m-2 p-2">Unrestrained:</label>
-    <select name="unrestrained" class="m-2 p-1" asp-for="UNRESTRAINED">
-        <option value="0.0">FALSE</option>
-        <option value="1.0">TRUE</option>
-    </select>
+        <label class="m-2 p-2">Bicyclist involved:</label>
+        <select name="bicycle" class="m-2 p-1" style="justify-content: right; float: right">
+            <option value="0.0">FALSE</option>
+            <option value="1.0">TRUE</option>
+        </select>
 
-    <label class="m-2 p-2">Intersection-related:</label>
-    <select name="intersection" class="m-2 p-1" asp-for="INTERSECTION_RELATED">
-        <option value="0.0">FALSE</option>
-        <option value="1.0">TRUE</option>
-    </select>
+    </div>
 
-    <label class="m-2 p-2">DUI:</label>
-    <select name="dui" class="m-2 p-1" asp-for="DUI">
-        <option value="0.0">FALSE</option>
-        <option value="1.0">TRUE</option>
-    </select>
+    <div class="col-4">
 
-    <label class="m-2 p-2">At night/dark conditions:</label>
-    <select name="night" class="m-2 p-1" asp-for="NIGHT_DARK_CONDITION">
-        <option value="0.0">FALSE</option>
-        <option value="1.0">TRUE</option>
-    </select>
+        <label class="m-2 p-2">Unrestrained:</label>
+        <select name="unrestrained" class="m-2 p-1" style="justify-content: right; float: right">
+            <option value="0.0">FALSE</option>
+            <option value="1.0">TRUE</option>
+        </select>
+        <br />
 
-    <label class="m-2 p-2">Roadway departure:</label>
-    <select name="roadwaydeparture" class="m-2 p-1" asp-for="ROADWAY_DEPARTURE">
-        <option value="0.0">FALSE</option>
-        <option value="1.0">TRUE</option>
-    </select>
+        <label class="m-2 p-2">Intersection-related:</label>
+        <select name="intersection" class="m-2 p-1" style="justify-content: right; float: right">
+            <option value="0.0">FALSE</option>
+            <option value="1.0">TRUE</option>
+        </select>
+        <br />
 
-    <label class="m-2 p-2">Single vehicle:</label>
-    <select name="singlevehicle" class="m-2 p-1" asp-for="SINGLE_VEHICLE">
-        <option value="0.0">FALSE</option>
-        <option value="1.0">TRUE</option>
-    </select>
+        <label class="m-2 p-2">DUI:</label>
+        <select name="dui" class="m-2 p-1" style="justify-content: right; float: right">
+            <option value="0.0">FALSE</option>
+            <option value="1.0">TRUE</option>
+        </select>
+        <br />
 
-    <input type="hidden" asp-for="MONTH" value="Jan" />
-    <input type="hidden" asp-for="DAY_OF_WEEK" value="Friday" />
-    <input type="hidden" asp-for="YEAR" value="2019" />
-    <input type="hidden" asp-for="MONTH" value="Jan" />
-    <input type="hidden" asp-for="ROUTE" value="15" />
-    <input type="hidden" asp-for="LAT_UTM_Y" value="4,488,307" />
-    <input type="hidden" asp-for="LONG_UTM_X" value="418,897" />
-    <input type="hidden" asp-for="MAIN_ROAD_NAME" value="MAIN ST" />
-    <input type="hidden" asp-for="CITY" value="Nephi" />
-    <input type="hidden" asp-for="COUNTY_NAME" value="UTAH" />
-    <input type="hidden" asp-for="HOUR" value="1" />
+    </div>
 
-    <button type="submit" class="btn btn-primary float-right m-2 p-1">Apply filter</button>
+    <div class="col-4">
+
+        <label class="m-2 p-2">At night/dark conditions:</label>
+        <select name="night" class="m-2 p-1" style="justify-content: right; float: right">
+            <option value="0.0">FALSE</option>
+            <option value="1.0">TRUE</option>
+        </select>
+        <br />
+
+        <label class="m-2 p-2">Roadway departure:</label>
+        <select name="roadwaydeparture" class="m-2 p-1" style="justify-content: right; float: right">
+            <option value="0.0">FALSE</option>
+            <option value="1.0">TRUE</option>
+        </select>
+        <br />
+
+        <label class="m-2 p-2">Single vehicle:</label>
+        <select name="singlevehicle" class="m-2 p-1" style="justify-content: right; float: right">
+            <option value="0.0">FALSE</option>
+            <option value="1.0">TRUE</option>
+        </select>
+        <br />
+
+        <button type="submit" class="btn btn-primary float-right m-2 p-1" style="background-color: rgb(81, 107, 82);">Make prediction</button>
+
+    </div>
 
 </form>
