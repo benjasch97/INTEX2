@@ -11,6 +11,7 @@ using Microsoft.ML.OnnxRuntime;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 
 
@@ -36,7 +37,7 @@ namespace INTEX2
             });
 
 
-
+            // this enables cookies
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential 
@@ -55,11 +56,37 @@ namespace INTEX2
             services.AddScoped<IAccidentsRepository, EFAccidentsRepository>();
 
             services.AddSingleton<InferenceSession>(
-                new InferenceSession("intex (3).onnx"));
+                new InferenceSession("wwwroot/intex (3).onnx"));
 
 
             services.AddRazorPages();
             services.AddServerSideBlazor();
+
+            services.AddHttpsRedirection(options =>
+            {
+                options.RedirectStatusCode = (int)HttpStatusCode.TemporaryRedirect;
+                options.HttpsPort = 5001;
+            });
+
+            services.AddHsts(options =>
+            {
+                options.Preload = true;
+                options.IncludeSubDomains = true;
+                options.MaxAge = TimeSpan.FromDays(60);
+                options.ExcludedHosts.Add("example.com");
+                options.ExcludedHosts.Add("www.example.com");
+            });
+
+            services.Configure<IdentityOptions>(options =>
+            {
+                // 
+                options.Password.RequireDigit = true;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireNonAlphanumeric = true;
+                options.Password.RequireUppercase = true;
+                options.Password.RequiredLength = 12;
+                options.Password.RequiredUniqueChars = 1;
+            });
 
         }
 

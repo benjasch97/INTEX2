@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+// this is used to implement the pagination in the Accidents page
+
 namespace INTEX2.Models.ViewModels
 {
     public class PageInfo

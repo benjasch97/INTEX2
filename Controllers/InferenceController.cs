@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+// this controller pertains to the onnx file and the ML model
+
 namespace INTEX2.Controllers
 {
     public class InferenceController : Controller

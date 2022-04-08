@@ -25,6 +25,7 @@ namespace INTEX2.Controllers
 
         }
 
+        // this accepts parameters from the filter if given, and returns the view according to the filter
         [HttpGet]
         public IActionResult Accidents(Nullable<float> motorcycle, Nullable<float> pedestrian, Nullable<float> overturn,
             Nullable<float> bicyclist, Nullable<float> unrestrained, Nullable<float> intersection, Nullable<float> dui,
@@ -71,6 +72,7 @@ namespace INTEX2.Controllers
             return View(x);
         }
 
+        // this accepts parameters from the form, and then passes it to the get
         [HttpPost]
         public IActionResult Accidents(Nullable<float> motorcycle, Nullable<float> pedestrian, Nullable<float> overturn,
             Nullable<float> bicyclist, Nullable<float> unrestrained, Nullable<float> intersection, Nullable<float> dui,

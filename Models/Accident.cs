@@ -5,6 +5,8 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
+// this coordinates with our database
+
 namespace INTEX2.Models
 {
     public class Accident
@@ -43,6 +45,7 @@ namespace INTEX2.Models
         public float DROWSY_DRIVING { get; set; }
         public float ROADWAY_DEPARTURE { get; set; }
 
+        // this relates to our ML model and our onnx file, and allows it to process the inputs from predictor
         public Tensor<float> AsTensor()
         {
             float[] data = new float[]
