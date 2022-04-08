@@ -44,12 +44,6 @@
 
 
   <ItemGroup>
-    <Folder Include="Components\" />
-  </ItemGroup>
-
-
-
-  <ItemGroup>
     <None Include="Pages\Admin\Accidents.razor" />
     <None Include="Pages\Admin\AdminLayout.razor" />
     <None Include="Pages\Admin\Details.razor" />
@@ -59,5 +53,8 @@
     <None Include="Pages\_Imports.razor" />
     <None Include="Pages\_ViewImports.cshtml" />
     <None Include="Views\Account\Login.cshtml" />
+    <None Include="wwwroot\intex %283%29.onnx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>

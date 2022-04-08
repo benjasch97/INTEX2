@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
+// this seeds our admin database
+
 namespace INTEX2.Models
 {
     public static class IdentitySeedData

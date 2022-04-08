@@ -1,6 +1,9 @@
 ﻿@page "/admin/accidents"
 @page "/admin"
+@inject IJSRuntime JsRuntime
 <!--inherits repository-->
+
+@* This page lists all of the accidents on the admin side of the website. *@
 
 @inherits OwningComponentBase<INTEX2.Models.IAccidentsRepository>
 
@@ -10,22 +13,22 @@
 <br />
 <br />
 
-    <table class="table table-sm table-striped table-bordered">
+<table class="table table-sm table-striped table-bordered">
 
-        <thead>
-            <tr>
-                <th>Crash ID</th>
-                <th>Crash Month</th>
-                <th>Crash Year</th>
-                <th>Route</th>
+    <thead>
+        <tr>
+            <th>Crash ID</th>
+            <th>Crash Month</th>
+            <th>Crash Year</th>
+            <th>Route</th>
 
-            </tr>
+        </tr>
 
-        </thead>
+    </thead>
 
-        @if (AccidentData?.Count() > 0)
-        {
-            //List the accidents
+    @if (AccidentData?.Count() > 0)
+    {
+        //List the accidents
 @foreach (INTEX2.Models.Accident a in AccidentData)
 {
 <tr>
@@ -44,15 +47,19 @@
     </td>
 
     <td>
-        <NavLink class="btn btn-light text-dark btn-sm btn-outline-dark" href="@GetDeleteUrl(a.CRASH_ID)">Delete</NavLink>
+        <button class="btn btn-danger btn-sm" @onclick="@(x => RemoveAccident(a))">Delete</button>
     </td>
-</tr>} }
-            else
-            {
+</tr>
+} }
+else
+{
 <tr>
     <td colspan="5" class="text-center">No Accidents</td>
-</tr>}
-    </table>
+</tr>
+}
+</table>
+
+@* The code below outlines different methods that allow the admin to edit, add and delete records *@
 
 @code { public INTEX2.Models.IAccidentsRepository repo => Service;
 
@@ -69,5 +76,14 @@
 
     public string GetDetailsUrl(long id) => $"/admin/accidents/details/{id}";
     public string GetEditUrl(long id) => $"/admin/accidents/edit/{id}";
-    public string GetDeleteUrl(long id) => $"/admin/accidents/delete/{id}";
- }
+
+    public async Task RemoveAccident(INTEX2.Models.Accident a)
+    {
+        bool confirmed = await JsRuntime.InvokeAsync<bool>("confirm", "You cannot undo this action. Would you like to proceed?");
+        if (confirmed)
+        {
+            repo.DeleteAccident(a);
+            await UpdateData();
+        }
+    }
+}

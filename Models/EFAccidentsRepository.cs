@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+// this file sets up our repository and creates methods that we will use to add, update, and delete records
+
 namespace INTEX2.Models
 {
     public class EFAccidentsRepository : IAccidentsRepository
